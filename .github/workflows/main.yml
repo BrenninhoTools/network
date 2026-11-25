@@ -1,0 +1,33 @@
+name: Testing
+on:
+  push:
+    branches: main
+  workflow_dispatch:
+jobs:
+  Test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@main
+
+      - name: Setup Node
+        uses: actions/setup-node@main
+        with:
+          node-version: 22
+
+      - name: Setup Haxe
+        uses: krdlab/setup-haxe@master
+        with:
+          haxe-version: 4.3.7
+
+      - name: Server tests
+        run: cd server && npm test
+
+      - name: Client tests
+        run: bash tests/run.sh
+
+      - name: Typecheck targets
+        run: |
+          for TARGET in "-cpp bin/cpp" "-hl bin/test.hl" "-neko bin/test.n"; do
+            haxe -cp src --macro "include('network')" $TARGET --no-output
+          done

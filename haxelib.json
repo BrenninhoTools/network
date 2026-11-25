@@ -1,0 +1,12 @@
+{
+	"name": "network",
+	"url": "https://github.com/BrenninhoTools/network",
+	"license": "MIT",
+	"tags": ["network", "online", "multiplayer", "websocket", "server", "leaderboard", "cross"],
+	"description": "Online multiplayer for Haxe: a WebSocket client with rooms, relay, state sync, chat and leaderboards, plus a dependency free Node.js server.",
+	"version": "1.0.0",
+	"releasenote": "First release.",
+	"classPath": "src",
+	"contributors": ["Brenninho"],
+	"dependencies": {}
+}
